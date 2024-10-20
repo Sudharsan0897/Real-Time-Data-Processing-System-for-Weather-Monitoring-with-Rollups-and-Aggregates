@@ -45,7 +45,7 @@ Attributes in the Database:
 * `min_temp`: Minimum temperature for the day
 * `dominant_condition`: Most frequent weather condition for the day
 
-###Data Processing:
+### Data Processing:
 
 Weather data is fetched and processed for each city in the list (CITIES).
 Daily summaries are calculated, including average, maximum, and minimum temperatures, as well as the most frequent weather condition.
