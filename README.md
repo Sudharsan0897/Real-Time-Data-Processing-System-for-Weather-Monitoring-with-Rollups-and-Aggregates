@@ -60,7 +60,7 @@ Scheduling:
 The system is designed to run scheduled tasks, fetching live data every five minutes. After fetching data, it prints the latest weather conditions and visualizes the daily summaries for each city.
 
 ### Main Functions
-`fetch_weather_data(city)`: Retrieves weather data for a specified city from the OpenWeatherMap API.
+* `fetch_weather_data(city)`: Retrieves weather data for a specified city from the OpenWeatherMap API.
 `process_weather_data()`: Collects weather data for all specified cities and stores it for further processing.
 `calculate_daily_summary()`: Computes average, maximum, and minimum temperatures for each city and stores the results in the database.
 `store_daily_summary(...)`: Inserts daily weather summary data into the SQLite database.
