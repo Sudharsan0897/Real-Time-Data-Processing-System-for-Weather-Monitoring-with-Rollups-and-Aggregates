@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Monitoring</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Weather Monitoring Dashboard</h1>
+        <div id="weather-data" class="mt-4">
+            <h2>Weather Summary</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>City</th>
+                        <th>Average Temp (°C)</th>
+                        <th>Max Temp (°C)</th>
+                        <th>Min Temp (°C)</th>
+                        <th>Dominant Condition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Weather data will be inserted here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Example function to fetch and display weather data
+        async function fetchWeatherData() {
+            try {
+                const response = await fetch('/api/weather_summary'); // Adjust this URL based on your API endpoint
+                const data = await response.json();
+                const tbody = document.querySelector('tbody');
+                tbody.innerHTML = ''; // Clear existing data
+
+                data.forEach(record => {
+                    const row = `
+                        <tr>
+                            <td>${record.date}</td>
+                            <td>${record.city}</td>
+                            <td>${record.avg_temp.toFixed(2)}</td>
+                            <td>${record.max_temp.toFixed(2)}</td>
+                            <td>${record.min_temp.toFixed(2)}</td>
+                            <td>${record.dominant_condition}</td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += row; // Append new row to the table
+                });
+            } catch (error) {
+                console.error('Error fetching weather data:', error);
+            }
+        }
+
+        // Fetch data on page load
+        window.onload = fetchWeatherData;
+    </script>
+</body>
+</html>
